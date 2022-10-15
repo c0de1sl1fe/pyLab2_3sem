@@ -1,5 +1,4 @@
 import os
-import csv
 
 import tqdm
 
@@ -22,6 +21,14 @@ def create_csv(path_dir: str) -> None:
                 pbar.update(1)
 
     file_csv.close
+
+
+def iterator1(name: str) -> str:
+    '''Just interater for direcrory'''
+    names = os.listdir(os.path.join("dataset", name))
+    for i in range(len(names)):
+        yield (names[i])
+    return None
 
 
 def run_1(name: str) -> None:
