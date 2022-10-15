@@ -10,6 +10,9 @@ def create_csv(path_dir: str) -> None:
     names = os.listdir(path)
     with open(os.path.join(path, f"{path_dir}annotation.csv"), 'w') as file_csv:
         writer = csv.writer(file_csv)
+        for i in names:
+            if not ".jpg" in i:
+                names.remove(i)
         with tqdm.tqdm(range(len(names))) as pbar:
             for i in names:
                 # writer.writerow(str(os.path.abspath(i) + "," + os.path.join(path, i) + "," + path_dir))
