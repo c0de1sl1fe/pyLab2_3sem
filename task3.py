@@ -52,6 +52,16 @@ def iterator3(path: str) -> str:
     return None
 
 
+class Iterator3_img:
+    def __init__(self, path: str):
+        self.names = os.listdir(path)
+        for i in self.names:
+            if not ".jpg" in i:
+                self.names.remove(i)
+        self.limit = len(self.names)
+        self.counter = 0
+
+
 def run_3(class_name, dst):
     print(3)
     tmp = create_dir(dst)

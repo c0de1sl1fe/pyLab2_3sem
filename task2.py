@@ -31,6 +31,23 @@ def iterator2(class_name: str, path: str) -> str:
     return None
 
 
+class Iterator2_img:
+    def __init__(self, class_name: str, path: str):
+        self.names = os.listdir(path)
+        for i in self.names:
+            if not class_name in i or not ".jpg" in i:
+                self.names.remove(i)
+        self.limit = len(self.names)
+        self.counter = 0
+
+    def __next__(self):
+        if self.counter < self.limit:
+            self.counter += 1
+            return self.names[i]
+        else:
+            raise StopIteration
+
+
 def run_2(new_path_dir, name_class):
     '''main function, that toggle all realWorking functions'''
     new_dataset_path = create_dir(new_path_dir)

@@ -36,6 +36,23 @@ def iterator1(name: str) -> str:
     return None
 
 
+class Iterator1_img:
+    def __init__(self, name: str):
+        self.names = os.listdir(os.path.join("dataset", name))
+        for i in self.names:
+            if not ".jpg" in i:
+                self.names.remove(i)
+        self.limit = len(self.names)
+        self.counter = 0
+
+    def __next__(self):
+        if self.counter < self.limit:
+            self.counter += 1
+            return self.names[i]
+        else:
+            raise StopIteration
+
+
 def run_1(name: str) -> None:
     '''this function just run primary create_csv'''
     create_csv(name)
