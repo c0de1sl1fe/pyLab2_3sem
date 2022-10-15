@@ -8,4 +8,6 @@ from task5 import run_5
 if __name__ == '__main__':
     print("Begin of lab!")
     # run_1("test")
-    # run_2('D:/for_test/' , "test")
+    run_2('D:/for_test/' , "test")
+    run_2('D:/for_test/' , "z_ttest")
+    # run_3('test',"D:/for_test/")
