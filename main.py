@@ -6,4 +6,6 @@ from task5 import run_5
 
 
 if __name__ == '__main__':
-    run_1("test")
+    print("Begin of lab!")
+    # run_1("test")
+    # run_2('D:/for_test/' , "test")
