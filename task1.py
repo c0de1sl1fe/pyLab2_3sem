@@ -26,6 +26,11 @@ def create_csv(path_dir: str) -> None:
 def iterator1(name: str) -> str:
     '''Just interater for direcrory'''
     names = os.listdir(os.path.join("dataset", name))
+    print(names)
+    for i in names:
+        if not ".jpg" in i:
+            names.remove(i)
+    print(names)
     for i in range(len(names)):
         yield (names[i])
     return None

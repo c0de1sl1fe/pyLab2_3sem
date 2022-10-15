@@ -41,6 +41,17 @@ def create_dir(path: str) -> str:
     return os.path.join(path, 'dataset')
 
 
+def iterator3(path: str) -> str:
+    '''Just interater for direcrory'''
+    names = os.listdir(path)
+    for i in names:
+        if not ".jpg" in i:
+            names.remove(i)
+    for i in range(len(names)):
+        yield (names[i])
+    return None
+
+
 def run_3(class_name, dst):
     print(3)
     tmp = create_dir(dst)

@@ -20,6 +20,17 @@ def copy_dataset(class_name_copy: str, dst: str) -> None:
             shutil.copy2(s, d)
 
 
+def iterator2(class_name: str, path: str) -> str:
+    '''Just interater for direcrory'''
+    names = os.listdir(path)
+    for i in names:
+        if not class_name in i or not ".jpg" in i:
+            names.remove(i)
+    for i in range(len(names)):
+        yield (names[i])
+    return None
+
+
 def run_2(new_path_dir, name_class):
     '''main function, that toggle all realWorking functions'''
     new_dataset_path = create_dir(new_path_dir)
