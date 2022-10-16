@@ -12,25 +12,20 @@ def create_csv(path_dir: str) -> None:
         for i in names:
             if not ".jpg" in i:
                 names.remove(i)
-        with tqdm.tqdm(range(len(names))) as pbar:
-            for i in names:
-                # writer.writerow(str(os.path.abspath(i) + "," + os.path.join(path, i) + "," + path_dir))
-                file_csv.write(os.path.abspath(i) + "," +
-                               os.path.join(path, i) + "," + path_dir)
-                file_csv.write("\n")
-                pbar.update(1)
-
+        for i in names:
+            # writer.writerow(str(os.path.abspath(i) + "," + os.path.join(path, i) + "," + path_dir))
+            file_csv.write(os.path.abspath(i) + "," +
+                           os.path.join(path, i) + "," + path_dir)
+            file_csv.write("\n")
     file_csv.close
 
 
 def iterator1(name: str) -> str:
     '''Just interater for direcrory'''
     names = os.listdir(os.path.join("dataset", name))
-    print(names)
     for i in names:
         if not ".jpg" in i:
             names.remove(i)
-    print(names)
     for i in range(len(names)):
         yield (names[i])
     return None
