@@ -43,7 +43,7 @@ class Iterator2_img:
     def __next__(self):
         if self.counter < self.limit:
             self.counter += 1
-            return self.names[i]
+            return self.names[self.counter - 1]
         else:
             raise StopIteration
 
