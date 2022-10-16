@@ -30,6 +30,7 @@ def create_dir_copy_randNames(class_name: str, dst: str) -> None:
             file_csv.write(os.path.abspath(i) + "," +
                            os.path.join(dst, i) + "," + class_name)
             file_csv.write("\n")
+    file_csv.close
 
 
 def create_dir(path: str) -> str:
@@ -60,7 +61,7 @@ class Iterator3_img:
                 self.names.remove(i)
         self.limit = len(self.names)
         self.counter = 0
-        
+
     def __next__(self):
         if self.counter < self.limit:
             self.counter += 1
