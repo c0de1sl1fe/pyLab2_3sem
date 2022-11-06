@@ -46,6 +46,8 @@ class Iterator1_img:
             return self.names[self.counter - 1]
         else:
             raise StopIteration
+    def clear(self):
+        self.counter = 0
 
 
 def run_1(name: str) -> None:
