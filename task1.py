@@ -31,23 +31,51 @@ def iterator1(name: str) -> str:
     return None
 
 
-class Iterator1_img:
-    def __init__(self, name: str):
-        self.names = os.listdir(os.path.join("dataset", name))
-        for i in self.names:
-            if not ".jpg" in i:
-                self.names.remove(i)
-        self.limit = len(self.names)
-        self.counter = 0
+    # class Iterator1_img:
+    #     def __init__(self, name: str):
+    #         self.names = os.listdir(os.path.join("dataset", name))
+    #         for i in self.names:
+    #             if not ".jpg" in i:
+    #                 self.names.remove(i)
+    #         self.limit = len(self.names)
+    #         self.counter = 0
 
+    #     def __next__(self):
+    #         if self.counter < self.limit:
+    #             self.counter += 1
+    #             return self.names[self.counter - 1]
+    #         else:
+    #             raise StopIteration
+    #     def clear(self):
+    #         self.counter = 0
+class Iterator1_img:
+    def __init__(self, name: str, path: str):
+        self.names = []
+        self.limit = 0
+        self.counter = 0
+        self.init(name, path)
     def __next__(self):
         if self.counter < self.limit:
             self.counter += 1
             return self.names[self.counter - 1]
         else:
             raise StopIteration
+
+    def init(self, name: str, path: str):
+        if not "dataset" in path:
+            raise ("error")
+        # self.names = os.listdir(os.path.join("dataset", name))
+        self.names = os.listdir(os.path.join(path, name))
+
+        for i in self.names:
+            if not ".jpg" in i:
+                self.names.remove(i)
+        self.limit = len(self.names)
+        self.counter = 0
+
     def clear(self):
         self.counter = 0
+
 
 
 def run_1(name: str) -> None:
