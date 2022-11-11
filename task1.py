@@ -48,12 +48,48 @@ def iterator1(name: str) -> str:
     #             raise StopIteration
     #     def clear(self):
     #         self.counter = 0
+# class Iterator1_img:
+#     def __init__(self, name: str, path: str):
+#         self.path = ""
+#         self.names = []
+#         self.limit = 0
+#         self.counter = 0
+#         self.init(name, path)
+
+#     def __next__(self):
+#         if self.counter < self.limit:
+#             self.counter += 1
+#             return self.names[self.counter - 1]
+#         else:
+#             raise StopIteration
+
+#     def init(self, name: str, path: str):
+#         if not "dataset" in path:
+#             raise ("error")
+#         self.path = path
+#         # self.names = os.listdir(os.path.join("dataset", name))
+#         self.names = os.listdir(os.path.join(path, name))
+
+#         for i in self.names:
+#             if not ".jpg" in i:
+#                 self.names.remove(i)
+#         self.limit = len(self.names)
+#         self.counter = 0
+
+#     def clear(self):
+#         self.counter = 0
+
+#     def setName(self, name: str):
+#         self.init(name, self.path)
 class Iterator1_img:
     def __init__(self, name: str, path: str):
+        self.path = ""
+        self.name = ""
         self.names = []
         self.limit = 0
         self.counter = 0
         self.init(name, path)
+
     def __next__(self):
         if self.counter < self.limit:
             self.counter += 1
@@ -64,8 +100,10 @@ class Iterator1_img:
     def init(self, name: str, path: str):
         if not "dataset" in path:
             raise ("error")
+        self.path = path
+        self.name = name
         # self.names = os.listdir(os.path.join("dataset", name))
-        self.names = os.listdir(os.path.join(path, name))
+        self.names = os.listdir(os.path.join(self.path, self.name))
 
         for i in self.names:
             if not ".jpg" in i:
@@ -75,6 +113,13 @@ class Iterator1_img:
 
     def clear(self):
         self.counter = 0
+
+    def setName(self, name: str):
+        self.init(name, self.path)
+
+    def setPath(self, path: str):
+        self.init(self.name, path)
+
 
 
 
